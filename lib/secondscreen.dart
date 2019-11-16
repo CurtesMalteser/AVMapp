@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:ui';
 import 'package:charts_flutter/flutter.dart' as charts;
+import 'DetailsScreen.dart';
 import 'TimeSeriesChart.dart';
 
 class SecondRoute extends StatefulWidget {
@@ -129,7 +130,10 @@ class _SecondPageState extends State<SecondRoute> {
                 ),*/
                 RaisedButton(
                   onPressed: () {
-                    _showDialog(context);
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => DetailsScreen()),
+                    );
                   },
                   child: Text('Details'),
                 ),
