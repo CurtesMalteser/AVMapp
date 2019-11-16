@@ -18,6 +18,7 @@ class SecondRoute extends StatelessWidget {
         // or simply save your changes to "hot reload" in a Flutter IDE).
         // Notice that the counter didn't reset back to zero; the application
         // is not restarted.
+        //primarySwatch: Colors.blue,
         primarySwatch: Colors.blue,
       ),
       home: SecondPage(title: 'AVM Home Page'),
@@ -43,16 +44,56 @@ class _SecondPageState extends State<SecondPage> {
         title: Text("Second Route AVM"),
       ),
       body: Center(
-        child: RaisedButton(
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => MyApp()),
-            );
-          },
-          child: Text('Go back!'),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            RaisedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => MyApp()),
+                );
+              },
+              child: Text('Go back!'),
+            ),
+            RaisedButton(
+              onPressed: () {
+                _showDialog(context);
+              },
+              child: Text('Pop Dialog!'),
+            ),
+          ],
         ),
       ),
     );
   }
+}
+
+// user defined function
+void _showDialog(BuildContext context) {
+  // flutter defined function
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      // return object of type Dialog
+      return AlertDialog(
+        title: Text("Alert Dialog title"),
+        content: Text("Alert Dialog body"),
+        actions: <Widget>[
+          FlatButton(
+            child: Text("More Info"),
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+          ),
+          FlatButton(
+            child: Text("Got it"),
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+          ),
+        ],
+      );
+    },
+  );
 }
