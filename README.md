@@ -2,7 +2,7 @@
 
 # authors:
 - António Bastião
-- Vladimir Ilievski
+- [Vladimir Ilievski](https://github.com/IlievskiV)
 - Mayra Recio
 
 # goals:
