@@ -13,6 +13,14 @@ class DetailsScreen extends StatefulWidget {
 class _DetailsScreenSate extends State<DetailsScreen> {
   final List<String> entries = <String>['A', 'B', 'C', 'D', 'E', 'F'];
   final List<int> colorCodes = <int>[80, 75, 73, 65, 46, 0];
+  final List<String> imagesList = <String>[
+    'assets/images/bathtub.jpg',
+    'assets/images/dishwahser.jpg',
+    'assets/images/toilet.jpg',
+    'assets/images/washbasin.jpg',
+    'assets/images/washing_machine.jpg',
+    'assets/images/watering_can.jpg',
+  ];
 
   bool isValueGreaterThanZero(double value) => value > 0;
 
@@ -20,7 +28,7 @@ class _DetailsScreenSate extends State<DetailsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Second Route AVM"),
+        title: Text("Water consumption details"),
       ),
       body: Center(
         child: Column(
@@ -28,7 +36,9 @@ class _DetailsScreenSate extends State<DetailsScreen> {
           children: <Widget>[
             Padding(
               padding: EdgeInsets.all(16),
-              child: Text("Overview of your water consumption"),
+              child: Text("Overview of your water consumption",
+                  style: TextStyle(fontSize: 20, fontFamily: 'Roboto'),
+      ),
             ),
             Expanded(
               child: ListView.separated(
@@ -45,9 +55,8 @@ class _DetailsScreenSate extends State<DetailsScreen> {
                         Container(
                           child: Padding(
                             padding: const EdgeInsets.only(right: 16),
-                            child: Image(
-                              image: NetworkImage(
-                                  'https://pbs.twimg.com/profile_images/1107881890072145921/LfIoviqB_400x400.jpg'),
+                            child: Image.asset(
+                              imagesList[index],
                               width: 60,
                               height: 60,
                             ),
@@ -77,8 +86,8 @@ class _DetailsScreenSate extends State<DetailsScreen> {
                                 min: 0,
                                 max: 100,
                                 value: colorCodes[index].toDouble(),
-                                activeColor: sliderColorProcessor(
-                                    colorCodes[index]),
+                                activeColor:
+                                    sliderColorProcessor(colorCodes[index]),
                                 inactiveColor: Color(0xff707070),
                                 label: 'Set a value',
                               ),
@@ -86,13 +95,11 @@ class _DetailsScreenSate extends State<DetailsScreen> {
                           ],
                         ),
                         Container(
-                          child:
-                            Text(
-                                colorCodes[index].toString(),
-                              style: TextStyle(
-                                  color: sliderColorProcessor(colorCodes[index])
-                              ),
-                            ),
+                          child: Text(
+                            colorCodes[index].toString(),
+                            style: TextStyle(
+                                color: sliderColorProcessor(colorCodes[index])),
+                          ),
                         ),
                       ],
                     ),

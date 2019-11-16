@@ -46,6 +46,9 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+
+  static const Color mainColor = Color(0xff1e537b);
+
   @override
   Widget build(BuildContext context) {
     // This method is rerun every time setState is called, for instance as done
@@ -56,12 +59,12 @@ class _MyHomePageState extends State<MyHomePage> {
     // than having to individually change instances of widgets.
     return Scaffold(
       //#1e537b
-      backgroundColor: Color(0xff1e537b),
-      appBar: AppBar(
+      backgroundColor: mainColor,
+      /*appBar: AppBar(
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
-      ),
+      ),*/
       body: Center(
         // Center is a layout widget. It takes a single child and positions it
         // in the middle of the parent.
@@ -96,8 +99,8 @@ class _MyHomePageState extends State<MyHomePage> {
                   MaterialPageRoute(builder: (context) => SecondRoute()),
                 );
               },
-              textColor: Colors.white,
-              color: Colors.red,
+              textColor: mainColor,
+              color: Color(0xFFF7F6F7),
               padding: const EdgeInsets.all(8.0),
               child: new Text(
                 "Log In",

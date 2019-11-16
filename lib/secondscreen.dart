@@ -38,9 +38,9 @@ class _SecondPageState extends State<SecondRoute> {
     return _createColorsData;
   }
 
-  static int _consumedWater = 3800;
+  static int _consumedWater = 150;
 
-  static const averageConsumedWater = 4200;
+  static const averageConsumedWater = 162;
 
   static WaterModifiedData calculatePercentageConsumedWater(int consumedWater) {
     int _averageConsumedWater = averageConsumedWater - consumedWater;
@@ -76,7 +76,7 @@ class _SecondPageState extends State<SecondRoute> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Second Route AVM"),
+        title: Text("AVM"),
       ),
       body: Center(
         child: Column(

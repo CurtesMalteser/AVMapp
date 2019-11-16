@@ -71,3 +71,10 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+  assets:
+    - assets/images/bathtub.jpg
+    - assets/images/dishwahser.jpg
+    - assets/images/toilet.jpg
+    - assets/images/washbasin.jpg
+    - assets/images/washing_machine.jpg
+    - assets/images/watering_can.jpg
