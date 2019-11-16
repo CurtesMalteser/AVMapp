@@ -5,6 +5,8 @@ import 'dart:ui';
 import 'package:charts_flutter/flutter.dart' as charts;
 import 'package:flutter/material.dart' as prefix0;
 
+import 'TimeSeriesChart.dart';
+
 class SecondRoute extends StatefulWidget {
   SecondRoute({Key key, this.title}) : super(key: key);
 
@@ -55,7 +57,7 @@ class _SecondPageState extends State<SecondRoute> {
   /// Create one series with sample hard coded data.
   static List<charts.Series<Data, int>> _createSampleData() {
     WaterModifiedData calculatedConsumedWater =
-    calculatePercentageConsumedWater(_consumedWater);
+        calculatePercentageConsumedWater(_consumedWater);
 
     final data = [
       new Data(0, calculatedConsumedWater.consumed),
@@ -81,44 +83,70 @@ class _SecondPageState extends State<SecondRoute> {
       ),
       body: Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisSize: MainAxisSize.max,
           children: <Widget>[
-            Text("Your daily water use",
-              style: TextStyle(
-                fontSize: 20,
-                fontFamily: 'Roboto'
-              ),
-            ),
-            SizedBox(
-              width: 229.0,
-              height: 229.0,
-              child: charts.PieChart(
-                _createSampleData(),
-                animate: true,
-                animationDuration: Duration(milliseconds: 500),
-                selectionModels: [
-                  new charts.SelectionModelConfig(
-                    type: charts.SelectionModelType.info,
-                    changedListener: null,
-                  )
-                ],
-                defaultRenderer: charts.ArcRendererConfig(
-                  arcWidth: 25,
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Padding(
+                  padding: EdgeInsets.only(top: 16, left: 16, right: 16),
+                  child: Text(
+                    "Your daily water use",
+                    style: TextStyle(fontSize: 20, fontFamily: 'Roboto'),
+                  ),
                 ),
-              ),
+                SizedBox(
+                  width: 229.0,
+                  height: 229.0,
+                  child: charts.PieChart(
+                    _createSampleData(),
+                    animate: true,
+                    animationDuration: Duration(milliseconds: 500),
+                    selectionModels: [
+                      new charts.SelectionModelConfig(
+                        type: charts.SelectionModelType.info,
+                        changedListener: null,
+                      )
+                    ],
+                    defaultRenderer: charts.ArcRendererConfig(
+                      arcWidth: 25,
+                    ),
+                  ),
+                ),
+                /*RaisedButton(
+                  onPressed: () {
+                    _showDialog(context);
+                  },
+                  child: Text('Pop Dialog!'),
+                ),*/
+                RaisedButton(
+                  onPressed: () {
+                    _showDialog(context);
+                  },
+                  child: Text('Details'),
+                ),
+              ],
             ),
-            RaisedButton(
-              onPressed: () {
-                _showDialog(context);
-              },
-              child: Text('Pop Dialog!'),
-            ),
-            Text("Your daily consumption",
-              style: TextStyle(
-                  fontSize: 20,
-                  fontFamily: 'Roboto'
+            Padding(
+              padding: EdgeInsets.all(16),
+              child: Column(
+                children: <Widget>[
+                  Container(
+                    child: Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text("Your daily consumption",
+                          style: TextStyle(fontSize: 20, fontFamily: 'Roboto'),
+                          textAlign: TextAlign.right,
+                          softWrap: false),
+                    ),
+                  ),
+                  SizedBox(
+                    width: double.infinity,
+                    height: 229.0,
+                    child: TimeSeriesBar.withSampleData(),
+                  ),
+                ],
               ),
-              textAlign: TextAlign.right,
             ),
           ],
         ),
