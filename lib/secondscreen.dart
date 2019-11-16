@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:avm/main.dart';
 import 'dart:ui';
-
 import 'package:charts_flutter/flutter.dart' as charts;
-import 'package:flutter/material.dart' as prefix0;
-
 import 'TimeSeriesChart.dart';
 
 class SecondRoute extends StatefulWidget {
@@ -98,19 +94,31 @@ class _SecondPageState extends State<SecondRoute> {
                 SizedBox(
                   width: 229.0,
                   height: 229.0,
-                  child: charts.PieChart(
-                    _createSampleData(),
-                    animate: true,
-                    animationDuration: Duration(milliseconds: 500),
-                    selectionModels: [
-                      new charts.SelectionModelConfig(
-                        type: charts.SelectionModelType.info,
-                        changedListener: null,
+                  child: Stack(
+                    children: <Widget>[
+                      charts.PieChart(
+                        _createSampleData(),
+                        animate: false,
+                        selectionModels: [
+                          new charts.SelectionModelConfig(
+                            type: charts.SelectionModelType.info,
+                            changedListener: null,
+                          )
+                        ],
+                        defaultRenderer: charts.ArcRendererConfig(
+                          arcWidth: 16,
+                        ),
+                      ),
+                      Center(
+                        child: Text(
+                          _consumedWater.toString() + "L",
+                          style: TextStyle(
+                              fontSize: 45,
+                              fontFamily: 'Roboto',
+                              fontWeight: FontWeight.bold),
+                        ),
                       )
                     ],
-                    defaultRenderer: charts.ArcRendererConfig(
-                      arcWidth: 25,
-                    ),
                   ),
                 ),
                 /*RaisedButton(
