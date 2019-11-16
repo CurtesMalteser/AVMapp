@@ -1,33 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:avm/main.dart';
 
-import 'main.dart';
-
-class SecondRoute extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'AVM Rocks',
-      theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
-        //primarySwatch: Colors.blue,
-        primarySwatch: Colors.blue,
-      ),
-      home: SecondPage(title: 'AVM Home Page'),
-    );
-  }
-}
-
-class SecondPage extends StatefulWidget {
-  SecondPage({Key key, this.title}) : super(key: key);
+class SecondRoute extends StatefulWidget {
+  SecondRoute({Key key, this.title}) : super(key: key);
 
   final String title;
 
@@ -35,7 +10,7 @@ class SecondPage extends StatefulWidget {
   _SecondPageState createState() => _SecondPageState();
 }
 
-class _SecondPageState extends State<SecondPage> {
+class _SecondPageState extends State<SecondRoute> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
