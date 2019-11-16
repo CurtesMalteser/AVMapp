@@ -78,7 +78,7 @@ class _DetailsScreenSate extends State<DetailsScreen> {
                             ),
                             SizedBox(
                               height: 20,
-                              width: 280,
+                              width: 236,
                               child: Slider(
                                 onChanged: (double newValue) {
                                   setState(() {});
