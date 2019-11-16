@@ -1,7 +1,7 @@
 # avm
 
 # authors:
-- António Bastião
+- [António Bastião](https://github.com/CurtesMalteser)
 - [Vladimir Ilievski](https://github.com/IlievskiV)
 - Mayra Recio
 
