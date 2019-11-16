@@ -14,6 +14,8 @@ class _DetailsScreenSate extends State<DetailsScreen> {
   final List<String> entries = <String>['A', 'B', 'C', 'D', 'E', 'F'];
   final List<int> colorCodes = <int>[80, 75, 73, 65, 46, 0];
 
+  bool isValueGreaterThanZero(double value) => value > 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -54,22 +56,43 @@ class _DetailsScreenSate extends State<DetailsScreen> {
                         Column(
                           mainAxisSize: MainAxisSize.max,
                           children: <Widget>[
+                            Padding(
+                              padding: EdgeInsets.only(bottom: 8),
+                              child: Visibility(
+                                  maintainState: true,
+                                  maintainAnimation: true,
+                                  maintainSize: true,
+                                  visible: !isValueGreaterThanZero(
+                                      colorCodes[index].toDouble()),
+                                  child: Text(
+                                      "There is no device connected yet.")),
+                            ),
                             SizedBox(
-                              width: 300,
+                              height: 20,
+                              width: 280,
                               child: Slider(
                                 onChanged: (double newValue) {
                                   setState(() {});
                                 },
                                 min: 0,
                                 max: 100,
-                                divisions: 10,
                                 value: colorCodes[index].toDouble(),
-                                activeColor: Colors.red,
-                                inactiveColor: Colors.black,
+                                activeColor: sliderColorProcessor(
+                                    colorCodes[index]),
+                                inactiveColor: Color(0xff707070),
                                 label: 'Set a value',
                               ),
                             ),
                           ],
+                        ),
+                        Container(
+                          child:
+                            Text(
+                                colorCodes[index].toString(),
+                              style: TextStyle(
+                                  color: sliderColorProcessor(colorCodes[index])
+                              ),
+                            ),
                         ),
                       ],
                     ),
@@ -83,5 +106,17 @@ class _DetailsScreenSate extends State<DetailsScreen> {
         ),
       ),
     );
+  }
+}
+
+// if color above threshold make red, bellow green and 0 grey
+Color sliderColorProcessor(int value) {
+  int threshold = 75;
+  if (value >= threshold) {
+    return Colors.red;
+  } else if (value == 0)
+    return Color(0xff707070);
+  else {
+    return Colors.green;
   }
 }
