@@ -11,8 +11,8 @@ class DetailsScreen extends StatefulWidget {
 }
 
 class _DetailsScreenSate extends State<DetailsScreen> {
-  final List<String> entries = <String>['A', 'B', 'C'];
-  final List<int> colorCodes = <int>[600, 500, 100];
+  final List<String> entries = <String>['A', 'B', 'C', 'D', 'E', 'F'];
+  final List<int> colorCodes = <int>[80, 75, 73, 65, 46, 0];
 
   @override
   Widget build(BuildContext context) {
@@ -40,8 +40,37 @@ class _DetailsScreenSate extends State<DetailsScreen> {
                     //child: Center(child: Text('Entry ${entries[index]}')),
                     child: Row(
                       children: <Widget>[
-                        Container(),
-                        Container(),
+                        Container(
+                          child: Padding(
+                            padding: const EdgeInsets.only(right: 16),
+                            child: Image(
+                              image: NetworkImage(
+                                  'https://pbs.twimg.com/profile_images/1107881890072145921/LfIoviqB_400x400.jpg'),
+                              width: 60,
+                              height: 60,
+                            ),
+                          ),
+                        ),
+                        Column(
+                          mainAxisSize: MainAxisSize.max,
+                          children: <Widget>[
+                            SizedBox(
+                              width: 300,
+                              child: Slider(
+                                onChanged: (double newValue) {
+                                  setState(() {});
+                                },
+                                min: 0,
+                                max: 100,
+                                divisions: 10,
+                                value: colorCodes[index].toDouble(),
+                                activeColor: Colors.red,
+                                inactiveColor: Colors.black,
+                                label: 'Set a value',
+                              ),
+                            ),
+                          ],
+                        ),
                       ],
                     ),
                   );
